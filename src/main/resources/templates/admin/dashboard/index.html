@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Trang chủ
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li class="active">Thống kê</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3 id="count_projects"></h3>
+                    <p>Tổng Dự Án</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="/project/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3 id="count_departs"></h3>
+                    <p>Tổng Phòng Ban</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-folder"></i>
+                </div>
+                <a href="/depart/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3 id="count_employees"></h3>
+                    <p>Tổng Nhân Viên </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="/employee/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3 id="count_salaries"></h3>
+
+                    <p>Tổng Hệ Số Lương</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-cash"></i>
+                </div>
+                <a href="/salary/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+
+        </section>
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) -->
+</div>
+
+<th:block layout:fragment="script">
+    <script src="/dist/js/pages/dashboard.js"></script>
+</th:block>
+</body>
+</html>
