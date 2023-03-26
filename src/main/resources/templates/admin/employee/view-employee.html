@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>Thông tin Nhân viên</h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li class="active">Nhân viên</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Thông tin nhân viên</h3>
+                </div>
+                <div class="box-body">
+                    <div class="box-footer center">
+                        <a th:href="@{/employee/add}">
+                            <button type="button" class="btn btn-primary pull-right">
+                                <i class="fa fa-plus"></i> Thêm mới nhân viên
+                            </button>
+                        </a>
+                    </div>
+                    <div th:if="${param.success}">
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">Ã—</button>
+                            <h4>
+                                <i class="icon fa fa-check"></i> Thành Công!
+                            </h4>
+                            Thông tin lưu lại thành công.
+                        </div>
+                    </div>
+                    <div th:if="${param.deleted}">
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert"
+                                    aria-hidden="true">Thành Công</button>
+                            <h4>
+                                <i class="icon fa fa-check"></i> Đã Xóa!
+                            </h4>
+                            Thông tin đã được xóa.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1"
+                                   class="table table-bordered table-striped dataTable"
+                                   role="grid" aria-describedby="example1_info">
+                                <thead class="thead">
+                                <tr>
+                                    <th>Mã Nhân Viên</th>
+                                    <th>Hình Ảnh</th>
+                                    <th>Tên Nhân Viên</th>
+                                    <th>Ngày Sinh</th>
+                                    <th>Số Điện Thoại</th>
+                                    <th>Giới Tính</th>
+                                    <th>Phòng Ban</th>
+                                    <th>Dự Án</th>
+                                    <th>Chức Vụ</th>
+                                    <th>Lương Cơ Bản</th>
+                                    <th>Tùy Chọn</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="">
+                                    <td th:text=""></td>
+                                    <td><img th:src=""
+                                             style="width: 80px; height: 100px" class="user-image"
+                                             alt="User Image"></td>
+                                    <td th:text=""></td>
+                                    <td th:text=""></td>
+                                    <td th:text=""></td>
+                                    <td >
+                                        <span th:text=" "></span>
+                                    </td>
+                                    <td th:text=""></td>
+                                    <td th:text=""></td>
+                                    <td th:text=""></td>
+                                    <td th:text=""></td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href=""><i class="fa fa-edit"></i> Sửa </a>
+                                        <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href=""><i class="fa fa-trash-o"></i> Xóa </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block layout:fragment="script">
+    <script>
+        $(function() {
+            $('#example1').DataTable({
+                'paging' : true,
+                'lengthChange' : false,
+                'searching' : true,
+                'ordering' : true,
+                'info' : true,
+                'autoWidth' : false
+            })
+            jQuery('#example1_wrapper input').addClass(
+                "form-control input-sm");
+        })
+    </script>
+</th:block>
+</body>
+</html>
