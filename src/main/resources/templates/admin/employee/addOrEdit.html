@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+  <title>Nhân Viên</title>
+</head>
+<body>
+<section layout:fragment="header">
+  <h1>
+    Thêm Nhân Viên
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/static"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+    <li class="active">Nhân Viên</li>
+  </ol>
+</section>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Nhân Viên</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form th:action="@{/employee/save}" th:object="${employee}" method="post" class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mã Nhân Viên</label>
+
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Mã Nhân Viên">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tên Nhân Viên</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{name}" />
+                <p class="text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Số Điện Thoại</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{phone}" />
+                <p class="text-red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Hình Ảnh</label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control"  th:field="*{photo}" />
+                <p class="text-red" th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Giới tính</label>
+              <div class="col-sm-10">
+                <div class="radio">
+                  <!--value = 1 => Nam| 0 =>Nu -->
+                  <label class="checkbox-inline"> <input type="radio"
+                                                         name="gender" value="1" id="gender1">Nam
+                  </label> <label class="checkbox-inline"> <input type="radio"
+                                                                  name="gender" checked="checked" value="0" id="gender2">Nữ
+                </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Sinh Nhật</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{birthday}" />
+                <p class="text-red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Phòng Ban</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{departs.id}" />
+                <p class="text-red" th:if="${#fields.hasErrors('departs.name')}" th:errors="*{departs.name}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Dự Án</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{project.id}" />
+                <p class="text-red" th:if="${#fields.hasErrors('project.name')}" th:errors="*{project.name}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Chức Vụ</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{position.id}" />
+                <p class="text-red" th:if="${#fields.hasErrors('position.ten')}" th:errors="*{position.ten}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Lương Cơ Bản</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{salary.id}" />
+                <p class="text-red" th:if="${#fields.hasErrors('salary.salary_name')}" th:errors="*{salary.salary_name}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Ghi Chú</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{notes}" />
+                <p class="text-red" th:if="${#fields.hasErrors('notes')}" th:errors="*{notes}"></p>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer center">
+            <a th:href="@{/employee/list}">
+              <button type="button" class="btn btn-default"><i class="fa fa-right"></i>Quay lại</button>
+            </a>
+            <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i>Lưu</button>
+          </div>
+          <!-- /.box-footer -->
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
+
+</body>
+
+</html>

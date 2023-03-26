@@ -69,24 +69,24 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="">
-                                    <td th:text=""></td>
-                                    <td><img th:src=""
+                                <tr th:each="listUsers : ${listEmployee}">
+                                    <td th:text="${listUsers.id}"></td>
+                                    <td><img th:src="@{'/getimage/'+${listUsers.photo}}"
                                              style="width: 80px; height: 100px" class="user-image"
                                              alt="User Image"></td>
-                                    <td th:text=""></td>
-                                    <td th:text=""></td>
-                                    <td th:text=""></td>
+                                    <td th:text="${listUsers.name}"></td>
+                                    <td th:text="${listUsers.birthday}"></td>
+                                    <td th:text="${listUsers.phone}"></td>
                                     <td >
-                                        <span th:text=" "></span>
+                                        <span th:text="${listUsers.gender} ? 'Nam': 'Nữ'  "></span>
                                     </td>
-                                    <td th:text=""></td>
-                                    <td th:text=""></td>
-                                    <td th:text=""></td>
-                                    <td th:text=""></td>
+                                    <td th:text="${listUsers.departs.name}"></td>
+                                    <td th:text="${listUsers.project.name}"></td>
+                                    <td th:text="${listUsers.position.ten}"></td>
+                                    <td th:text="${listUsers.salary.salary_name}"></td>
                                     <td>
-                                        <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href=""><i class="fa fa-edit"></i> Sửa </a>
-                                        <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href=""><i class="fa fa-trash-o"></i> Xóa </a>
+                                        <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/employee/edit/' + ${listUsers.id}}"><i class="fa fa-edit"></i> Sửa </a>
+                                        <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/employee/delete/' + ${listUsers.id}}"><i class="fa fa-trash-o"></i> Xóa </a>
                                     </td>
                                 </tr>
                                 </tbody>
