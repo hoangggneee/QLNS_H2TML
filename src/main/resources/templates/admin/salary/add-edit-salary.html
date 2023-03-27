@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Lương</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Thêm Hệ Số Lương
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/static"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+        <li class="active">Lương</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Lương</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form th:action="@{/salary/save}" th:object="${salary}" method="post" class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Mã Hệ Số Lương</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Mã Lương">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Tên Hệ Số Lương</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  th:field="*{salary_name}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('salary_name')}" th:errors="*{salary_name}"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Lương Thực Tế</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  th:field="*{salary_detail}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('salary_detail')}" th:errors="*{salary_detail}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer center">
+                        <a th:href="@{/salary/list}">
+                            <button type="button" class="btn btn-default"><i class="fa fa-right"></i>Quay lại</button>
+                        </a>
+                        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i>Lưu</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+    </script>
+</th:block>
+
+</body>
+
+</html>
