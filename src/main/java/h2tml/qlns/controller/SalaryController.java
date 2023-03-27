@@ -36,4 +36,16 @@ public class SalaryController {
         return list_redirect;
 
     }
+    @GetMapping("edit/{id}")
+    public String editSalary(@PathVariable(value = "id")long id, Model model){
+        Salary salary = salaryService.getById(id);
+        model.addAttribute("salary",salary);
+        return add_edit_template;
+    }
+    @GetMapping("/delete/{id}")
+    public String deleteSalary(@PathVariable(value = "id") long id, Model model) {
+        salaryService.deleteById(id);
+
+        return list_redirect+"?deleted";
+    }
 }
