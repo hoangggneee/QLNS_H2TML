@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+  <title>Chức Vụ</title>
+</head>
+<body>
+<section layout:fragment="header">
+  <h1>
+    Thêm Chức Vụ
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/static"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+    <li class="active">Chức Vụ</li>
+  </ol>
+</section>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chức Vụ</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form th:action="@{/position/save}" th:object="${position}" method="post" class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mã Chức Vụ</label>
+
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Mã Dự Án">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tên Chức Vụ </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{ten}" />
+                <p class="text-red" th:if="${#fields.hasErrors('ten')}" th:errors="*{ten}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Hệ Số Chức Vụ</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{heso}" />
+                <p class="text-red" th:if="${#fields.hasErrors('heso')}" th:errors="*{heso}"></p>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer center">
+              <a th:href="@{/position/list}">
+                <button type="button" class="btn btn-default"><i class="fa fa-right"></i>Quay lại</button>
+              </a>
+              <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i>Lưu</button>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
+
+</body>
+
+</html>

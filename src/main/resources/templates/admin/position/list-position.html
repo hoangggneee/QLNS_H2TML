@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Dự Án</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Danh mục Chức Vụ
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/static"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li class="active">Chức Vụ</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách các chức vụ</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="box-footer center">
+                        <a th:href="@{/position/add}">
+                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Thêm mới
+                            </button>
+                        </a>
+                    </div>
+                    <div th:if="${param.success}">
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Thành Công</button>
+                            <h4><i class="icon fa fa-check"></i> Thành Công</h4>
+                            Thông tin đã được lưu lại.
+                        </div>
+                    </div>
+                    <div th:if="${param.deleted}">
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Thành Công</button>
+                            <h4><i class="icon fa fa-check"></i> Đã Xóa</h4>
+                            Xóa thành công.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+                                   aria-describedby="example1_info">
+                                <thead class="thead">
+                                <tr>
+                                    <th>Mã Chức Vụ</th>
+                                    <th>Tên Chức Vụ</th>
+                                    <th>Hệ Số Chức Vụ</th>
+                                    <th>Chức Năng</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="position : ${listPosition}">
+                                    <td th:text="${position.id}">ID Chuc Vu</td>
+                                    <td th:text="${position.ten}">Ten Chuc Vu</td>
+                                    <td th:text="${position.heso}">He So Chuc Vu</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/position/edit/' + ${position.id}}"><i class="fa fa-edit"></i> Sửa </a>
+                                        <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/position/delete/' + ${position.id}}"><i class="fa fa-trash-o"></i> Xóa </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+            $('#example1').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            })
+            jQuery('#example1_wrapper input').addClass("form-control input-sm"); // modify table search input
+        })
+    </script>
+</th:block>
+</body>
+</html>
