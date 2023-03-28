@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+  <title>Dự Án</title>
+</head>
+<body>
+<section layout:fragment="header">
+  <h1>
+    Thêm Dự Án
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/static"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+    <li class="active">Dự Án</li>
+  </ol>
+</section>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Dự Án</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form th:action="@{/project/save}" th:object="${project}" method="post" class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mã Dự Án</label>
+
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Mã Dự Án">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tên Dự Án</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{name}" />
+                <p class="text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Thưởng Dự Án</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{salary.id}" />
+                <p class="text-red" th:if="${#fields.hasErrors('salary.salary_detail')}" th:errors="*{salary.salary_detail}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Ngày Bắt Đầu</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="start" th:field="*{start}">
+                <p class="text-red" th:if="${#fields.hasErrors('start')}" th:errors="*{start}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Ngày Kết Thúc</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{end}" />
+                <p class="text-red" th:if="${#fields.hasErrors('end')}" th:errors="*{end}"></p>
+              </div>
+            </div>
+
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer center">
+            <a th:href="@{/project/list}">
+              <button type="button" class="btn btn-default"><i class="fa fa-right"></i>Quay lại</button>
+            </a>
+            <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i>Lưu</button>
+          </div>
+          <!-- /.box-footer -->
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
+
+</body>
+
+</html>
