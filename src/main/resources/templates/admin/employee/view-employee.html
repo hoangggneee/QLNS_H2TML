@@ -84,7 +84,7 @@
                                     <td th:text="${listUsers.project.name}"></td>
                                     <td th:text="${listUsers.position.ten}"></td>
                                     <td th:text="${listUsers.salary.salary_name}"></td>
-                                    <td>
+                                    <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}">
                                         <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/employee/edit/' + ${listUsers.id}}"><i class="fa fa-edit"></i> Sửa </a>
                                         <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/employee/delete/' + ${listUsers.id}}"><i class="fa fa-trash-o"></i> Xóa </a>
                                     </td>

@@ -1,16 +1,19 @@
 package h2tml.qlns.service;
 
 import h2tml.qlns.model.User;
-import h2tml.qlns.web.dto.UserRegistrationDto;
 
 import java.util.List;
 
+import h2tml.qlns.web.dto.UserRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import javax.validation.Valid;
+
 public interface IUserService extends UserDetailsService{
-    User save(UserRegistrationDto registrationDto);
+    User save(@Valid UserRegistrationDto registrationDto);
     User findByUsername(String username);
 	List<User> findAll();
+
     
     
 }

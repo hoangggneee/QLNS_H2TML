@@ -1,18 +1,36 @@
 <!-- sidebar: style can be found in sidebar.less -->
-<section class="sidebar" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<section class="sidebar" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-            <img src="/dist/img/img1.jpg" class="img-circle" alt="User Image">
+            <img alt="User Image" class="img-circle" th:src="${#authentication.getPrincipal().getPhotoLink()}">
         </div>
         <div class="pull-left info">
-            <p sec:authentication="principal.username"></p>
+            <p sec:authentication="principal.fullName"></p>
             <a href="#"><i class="fa fa-circle text-success"></i> Đang hoạt động</a>
         </div>
     </div>
 
     <ul class="sidebar-menu">
         <li class="header">DANH MỤC</li>
+        <ul class="sidebar-menu">
+            <li class="active treeview">
+                <a href="#">
+                    <i class="fa fa-th"></i> <span>QUẢN LÝ NHÂN VIÊN</span>
+                    <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li><a th:href="@{/user/list}"><i class="fa fa-circle-o"></i>Thông Tin</a></li>
+
+                </ul>
+            </li>
+
+
+        </ul >
+        <ul class="sidebar-menu">
         <li class="active treeview">
             <a href="#">
                 <i class="fa fa-th"></i> <span>QUẢN LÝ THÔNG TIN</span>
@@ -20,16 +38,18 @@
           <i class="fa fa-angle-left pull-right"></i>
         </span>
             </a>
+
             <ul class="treeview-menu">
 
 
                 <li><a th:href="@{/employee/list}"><i class="fa fa-circle-o"></i>Nhân Viên</a></li>
-                <li><a th:href="@{/depart/list}"><i class="fa fa-circle-o"></i>Phòng Ban</a></li>
-                <li><a th:href="@{/position/list}"><i class="fa fa-circle-o"></i>Chức Vụ</a></li>
-                <li><a th:href="@{/project/list}"><i class="fa fa-circle-o"></i>Dự Án</a></li>
-                <li><a th:href="@{/salary/list}"><i class="fa fa-circle-o"></i>Lương</a></li>
+                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/depart/list}"><i class="fa fa-circle-o"></i>Phòng Ban</a></li>
+                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/position/list}"><i class="fa fa-circle-o"></i>Chức Vụ</a></li>
+                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/project/list}"><i class="fa fa-circle-o"></i>Dự Án</a></li>
+                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/salary/list}"><i class="fa fa-circle-o"></i>Lương</a></li>
             </ul>
         </li>
+            </ul>
 
 
     </ul>
@@ -43,8 +63,9 @@
             </a>
             <ul class="treeview-menu">
 
-                <li ><a th:href="@{/}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-circle-o"></i>Đăng Xuất</a></li>
+                <li><a th:href="@{/}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-circle-o"></i>Đăng
+                    Xuất</a></li>
 
             </ul>
         </li>

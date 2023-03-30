@@ -1,5 +1,6 @@
 package h2tml.qlns.service;
 
+import h2tml.qlns.data.UserInfoDetails;
 import h2tml.qlns.model.Role;
 import h2tml.qlns.model.User;
 import h2tml.qlns.repository.IRoleRepository;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -37,7 +39,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public User save(UserRegistrationDto registrationDto) {
+    public User save(@Valid UserRegistrationDto registrationDto) {
 
         //Creating admin role user
         User user = new User(
@@ -45,7 +47,7 @@ public class UserServiceImpl implements IUserService{
                 ,registrationDto.getLastName()
                 , registrationDto.getUserName()
                 ,passwordEncoder.encode(registrationDto.getPassword())
-                , Arrays.asList(roleRepository.findByName("ADMIN")));
+                , Arrays.asList(roleRepository.findByName("USER")));
 
         return userRepository.save(user);
     }
@@ -62,7 +64,7 @@ public class UserServiceImpl implements IUserService{
         if(user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        return new UserInfoDetails(user);
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

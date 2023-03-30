@@ -7,7 +7,7 @@ import java.util.Collection;
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-    protected User() {
+    public User() {
     }
     public User(String firstName, String lastName, String email, String password, Collection< Role > roles) {
         super();
@@ -125,9 +125,18 @@ public class User {
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
+    @Column(name = "photo")
+    public String photo;
 
+    public String getPhoto() {
+        return photo;
+    }
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
