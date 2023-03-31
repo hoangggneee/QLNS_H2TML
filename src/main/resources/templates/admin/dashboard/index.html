@@ -29,6 +29,7 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
+                <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                 <a href="/project/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -43,6 +44,7 @@
                 <div class="icon">
                     <i class="ion ion-folder"></i>
                 </div>
+                <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                 <a href="/depart/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -57,6 +59,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
+                <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                 <a href="/employee/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -72,6 +75,7 @@
                 <div class="icon">
                     <i class="ion ion-cash"></i>
                 </div>
+                <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                 <a href="/salary/list" class="small-box-footer">Xem Chi Tiết<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
