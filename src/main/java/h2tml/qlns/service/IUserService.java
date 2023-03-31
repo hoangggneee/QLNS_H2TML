@@ -1,5 +1,6 @@
 package h2tml.qlns.service;
 
+import h2tml.qlns.model.Position;
 import h2tml.qlns.model.User;
 
 import java.util.List;

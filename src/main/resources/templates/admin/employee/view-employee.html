@@ -22,6 +22,7 @@
                 </div>
                 <div class="box-body">
                     <div class="box-footer center">
+                        <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                         <a th:href="@{/employee/add}">
                             <button type="button" class="btn btn-primary pull-right">
                                 <i class="fa fa-plus"></i> Thêm mới nhân viên
@@ -84,7 +85,7 @@
                                     <td th:text="${listUsers.project.name}"></td>
                                     <td th:text="${listUsers.position.ten}"></td>
                                     <td th:text="${listUsers.salary.salary_name}"></td>
-                                    <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}">
+                                    <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                                         <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/employee/edit/' + ${listUsers.id}}"><i class="fa fa-edit"></i> Sửa </a>
                                         <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/employee/delete/' + ${listUsers.id}}"><i class="fa fa-trash-o"></i> Xóa </a>
                                     </td>

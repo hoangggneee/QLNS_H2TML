@@ -26,6 +26,7 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="box-footer center">
+            <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
             <a th:href="@{/depart/add}">
               <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Thêm mới
               </button>
@@ -62,7 +63,7 @@
                   <td th:text="${depart.id}">Mã Phong Ban</td>
                   <td th:text="${depart.name}">Tên Phong Ban</td>
                   <td th:text="${depart.sdt}">Số Dien Thoai</td>
-                  <td>
+                  <td th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}">
                     <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/depart/edit/' + ${depart.id}}"><i class="fa fa-edit"></i> Sửa </a>
                     <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/depart/delete/' + ${depart.id}}"><i class="fa fa-trash-o"></i> Xóa </a>
                   </td>

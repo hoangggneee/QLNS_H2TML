@@ -8,12 +8,12 @@
 <body>
 <section layout:fragment="header">
     <h1>
-        Thông tin người dùng!
+        Thông tin tài khoản !
 
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li class="active">Người dùng</li>
+        <li class="active">Nhân Viên</li>
     </ol>
 
 </section>
@@ -25,24 +25,17 @@
                     <h3 class="box-title">Thông tin người dùng</h3>
                 </div>
                 <div class="box-body">
-                    <div class="box-footer center">
-                        <a >
-                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Thêm mới người quản lý
-                            </button>
-                        </a>
-                    </div>
                     <div th:if="${param.success}">
                         <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>
-                            <h4><i class="icon fa fa-check"></i> Success!</h4>
-                            Lưu thông tin thành công!
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            <h4><i class="icon fa fa-check"></i> Thành Công</h4>
+
                         </div>
                     </div>
                     <div th:if="${param.deleted}">
                         <div class="alert alert-info alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">Ã—</button>
-                            <h4><i class="icon fa fa-check"></i> Deleted!</h4>
-                            Lưu thông tin thành công!
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            <h4><i class="icon fa fa-check"></i> Đã Xóa</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -51,30 +44,30 @@
                                    aria-describedby="example1_info">
                                 <thead class="thead">
                                 <tr>
-                                    <th>User ID</th>
-                                    <th>Image</th>
+                                    <th>Hình Ảnh</th>
+                                    <th>ID Nhân Viên</th>
                                     <th>Email</th>
-                                    <th>firstName</th>
-                                    <th>lastName</th>
-
-                                    <th>Roles</th>
-                                    <th>Actions</th>
+                                    <th>Tên Họ</th>
+                                    <th>Tên</th>
+                                    <Th>Mật Khẩu</Th>
+                                    <th>Quyền hạn</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="listUsers : ${listUsers}">
+                                    <td><img th:src="@{'/getimage/'+${listUsers.photo}}"
+                                             style="width: 80px; height: 100px" class="user-image"
+                                             alt="User Image"></td>
                                     <td th:text="${listUsers.id}"></td>
-                                    <td> <img src="/dist/img/R.png" style="width: 40px; height: 50px" class="user-image" alt="User Image"></td>
                                     <td th:text="${listUsers.email}"></td>
                                     <td th:text="${listUsers.firstName}"></td>
                                     <td th:text="${listUsers.lastName}"></td>
-
-
+                                    <td th:text="${listUsers.password}"></td>
                                     <td ><b style="color:green">[[${listUsers.roles}]]</b></td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit"><i class="fa fa-edit"></i> </a>
-                                        <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" ><i class="fa fa-trash-o"></i> </a>
-                                    </td>
+                                    <td th:text="${listUsers.address}"></td>
+                                    <td th:text="${listUsers.phone}"></td>
                                 </tr>
                                 </tbody>
                             </table>

@@ -17,15 +17,28 @@ public class UserRegistrationDto {
 	//@NotEmpty(message = "*Please provide your password")
 	private String password;
 
+	private Boolean active;
+
+	private String address;
+
+	private int phone;
+
+	public String photo;
+
 	public UserRegistrationDto(){
 	}
-	
-	public UserRegistrationDto(String firstName, String lastName, String userName, String password) {
+
+	public UserRegistrationDto(String firstName, String lastName, String userName, String password, Boolean active,
+							   String address, int phone , String photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.active = true;
+		this.address = address;
+		this.phone = phone;
+		this.photo = photo;
 	}
 	
 	public String getFirstName() {
@@ -51,5 +64,37 @@ public class UserRegistrationDto {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 }

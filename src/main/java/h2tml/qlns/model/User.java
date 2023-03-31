@@ -2,6 +2,7 @@ package h2tml.qlns.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -29,9 +30,9 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.active = true;
-		this.adderss = adderss;
+		this.address = adderss;
 		this.phone = phone;
-		this.roles = roles;
+
 	}
 
 
@@ -107,14 +108,14 @@ public class User {
         this.active=active;
     }
     
-    @Column(name = "adderss")
-    private String adderss;
+    @Column(name = "address")
+    private String address;
    
-    public String getAdderss() {
-		return adderss;
+    public String getAddress() {
+		return address;
 	}
-	public void setAdderss(String adderss) {
-		this.adderss = adderss;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	@Column(name = "phone")

@@ -1,6 +1,7 @@
 package h2tml.qlns.service;
 
 import h2tml.qlns.data.UserInfoDetails;
+import h2tml.qlns.model.Position;
 import h2tml.qlns.model.Role;
 import h2tml.qlns.model.User;
 import h2tml.qlns.repository.IRoleRepository;
@@ -15,9 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +46,7 @@ public class UserServiceImpl implements IUserService{
                 ,registrationDto.getLastName()
                 , registrationDto.getUserName()
                 ,passwordEncoder.encode(registrationDto.getPassword())
-                , Arrays.asList(roleRepository.findByName("USER")));
+                , Arrays.asList(roleRepository.findByName("Nhân Viên")));
 
         return userRepository.save(user);
     }
@@ -75,7 +74,5 @@ public class UserServiceImpl implements IUserService{
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
-    
-    
+    }
 
-}

@@ -23,7 +23,7 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li><a th:href="@{/user/list}"><i class="fa fa-circle-o"></i>Thông Tin</a></li>
+                    <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}" ><a th:href="@{/user/list}"><i class="fa fa-circle-o"></i>Thông Tin</a></li>
 
                 </ul>
             </li>
@@ -43,10 +43,10 @@
 
 
                 <li><a th:href="@{/employee/list}"><i class="fa fa-circle-o"></i>Nhân Viên</a></li>
-                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/depart/list}"><i class="fa fa-circle-o"></i>Phòng Ban</a></li>
-                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/position/list}"><i class="fa fa-circle-o"></i>Chức Vụ</a></li>
-                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/project/list}"><i class="fa fa-circle-o"></i>Dự Án</a></li>
-                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'ADMIN')}"><a th:href="@{/salary/list}"><i class="fa fa-circle-o"></i>Lương</a></li>
+                <li ><a th:href="@{/depart/list}"><i class="fa fa-circle-o"></i>Phòng Ban</a></li>
+                <li><a th:href="@{/position/list}"><i class="fa fa-circle-o"></i>Chức Vụ</a></li>
+                <li><a th:href="@{/project/list}"><i class="fa fa-circle-o"></i>Dự Án</a></li>
+                <li><a th:href="@{/salary/list}"><i class="fa fa-circle-o"></i>Lương</a></li>
             </ul>
         </li>
             </ul>
@@ -63,7 +63,7 @@
             </a>
             <ul class="treeview-menu">
 
-                <li><a th:href="@{/}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
+                <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}"><a th:href="@{/}"><i class="fa fa-circle-o"></i>Thống kê</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-circle-o"></i>Đăng
                     Xuất</a></li>
 
