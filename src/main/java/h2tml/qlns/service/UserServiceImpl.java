@@ -46,9 +46,9 @@ public class UserServiceImpl implements IUserService{
                 ,registrationDto.getLastName()
                 , registrationDto.getUserName()
                 ,passwordEncoder.encode(registrationDto.getPassword())
-                ,registrationDto.getAddress()
+                , registrationDto.getAddress()
                 , registrationDto.getPhone()
-                , registrationDto.getPhoto()
+                ,registrationDto.getPhoto()
                 , Arrays.asList(roleRepository.findByName("Nhân Viên")));
 
         return userRepository.save(user);
@@ -73,9 +73,9 @@ public class UserServiceImpl implements IUserService{
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
-	@Override
-	public List<User> findAll() {
-		return userRepository.findAll();
-	}
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
+}
 

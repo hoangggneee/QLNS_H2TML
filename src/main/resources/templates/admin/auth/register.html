@@ -19,6 +19,7 @@
 <body class="hold-transition login-page" style="background-image: url(https://diginet.com.vn/wp-content/uploads/2021/09/chuyen-doi-so-trong-quan-tri-nhan-su-1.jpg)">
 <div class="login-box">
     <div class="login-logo">
+        <a href="#"><b></b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -61,15 +62,15 @@
             </div>
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" th:field="*{address}" required  placeholder="address">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="glyphicon glyphicon-home form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="photo" class="form-control" th:field="*{photo}" required  placeholder="Photo">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <input type="text" class="form-control" th:field="*{photo}" required  placeholder="Photo">
+                <span class="glyphicon glyphicon-picture form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" th:field="*{phone}" required  placeholder="+84">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span class="glyphicon glyphicon-phone-alt form-control-feedback"></span>
             </div>
 
             <div class="row">
@@ -79,10 +80,11 @@
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
                 </div>
+
                 <!-- /.col -->
             </div>
         </form>
-        <a th:href="@{/}" class="text" style="color: #a94442 ; float: right"> <= Quay lại </a>
+        <a th:href="@{/}" class="col-lg-4"style="color: red; float: right;"> <= Quay Lại</a>
         <a th:href="@{/login}" class="text-center">Đăng nhập tài khoản</a>
     </div>
     <!-- /.login-box-body -->

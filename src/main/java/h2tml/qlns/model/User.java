@@ -10,7 +10,7 @@ public class User {
 
     public User() {
     }
-    public User(String firstName, String lastName, String email, String password, String address , String phone , String photo ,Collection< Role > roles) {
+    public User(String firstName, String lastName, String email, String password, String address ,String phone , String photo ,Collection< Role > roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,28 +19,29 @@ public class User {
         this.roles = roles;
         this.active=true;
         this.address = address;
-        this.phone = phone;
+        this.phone= phone;
         this.photo = photo;
+
+
     }
 
 
     public User(Long id, String firstName, String lastName, String email, String password, Boolean active,
-			String adderss, String phone, String photo ,Collection<Role> roles) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.active = true;
-		this.address = adderss;
-		this.phone = phone;
-        this.photo = photo;
+                String adderss, String phone, Collection<Role> roles) {
+        super();
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.active = true;
+        this.address = adderss;
+        this.phone = phone;
 
-	}
+    }
 
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
@@ -111,20 +112,19 @@ public class User {
     public void setActive(boolean active){
         this.active=active;
     }
-    
+
     @Column(name = "address")
     private String address;
-   
-    public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	@Column(name = "phone")
-	private String phone;
 
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Column(name = "phone")
+    private String phone;
     public String getPhone() {
         return phone;
     }

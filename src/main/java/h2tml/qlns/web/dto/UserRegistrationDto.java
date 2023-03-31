@@ -40,7 +40,7 @@ public class UserRegistrationDto {
 		this.phone = phone;
 		this.photo = photo;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -80,6 +80,7 @@ public class UserRegistrationDto {
 
 	public void setAddress(String address) {
 		this.address = address;
+		System.out.print(this.address);
 	}
 
 	public String getPhone() {
