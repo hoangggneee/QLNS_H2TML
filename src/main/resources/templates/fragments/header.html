@@ -25,8 +25,8 @@
                     <li class="user-header">
                         <img alt="User Image" class="img-circle" th:src="${#authentication.getPrincipal().getPhotoLink()}">
                         <p>
-                            Chào Mừng <span sec:authentication="principal.fullName"></span>
-                            <p th:text="${#strings.listJoin(#authentication.getPrincipal().getAuthorities(), ' | ')}" />
+                            Chào Mừng | <span sec:authentication="principal.fullName" style = "color: blue"></span>
+                            <p th:text="${#strings.listJoin(#authentication.getPrincipal().getAuthorities(), ' | ')}" style = "color: darkred" />
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
