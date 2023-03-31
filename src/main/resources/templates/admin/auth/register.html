@@ -16,10 +16,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/AdminLTE.min.css" />
 </head>
-<body class="hold-transition login-page" style="background: wheat;">
+<body class="hold-transition login-page" style="background-image: url(https://diginet.com.vn/wp-content/uploads/2021/09/chuyen-doi-so-trong-quan-tri-nhan-su-1.jpg)">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>QUẢN LÝ NHÂN SỰ</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -69,7 +68,7 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" th:field="*{phone}" required  placeholder="phone">
+                <input type="text" class="form-control" th:field="*{phone}" required  placeholder="+84">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
@@ -83,6 +82,7 @@
                 <!-- /.col -->
             </div>
         </form>
+        <a th:href="@{/}" class="text" style="color: #a94442 ; float: right"> <= Quay lại </a>
         <a th:href="@{/login}" class="text-center">Đăng nhập tài khoản</a>
     </div>
     <!-- /.login-box-body -->

@@ -46,6 +46,9 @@ public class UserServiceImpl implements IUserService{
                 ,registrationDto.getLastName()
                 , registrationDto.getUserName()
                 ,passwordEncoder.encode(registrationDto.getPassword())
+                ,registrationDto.getAddress()
+                , registrationDto.getPhone()
+                , registrationDto.getPhoto()
                 , Arrays.asList(roleRepository.findByName("Nhân Viên")));
 
         return userRepository.save(user);

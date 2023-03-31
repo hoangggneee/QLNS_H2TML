@@ -10,7 +10,7 @@ public class User {
 
     public User() {
     }
-    public User(String firstName, String lastName, String email, String password, Collection< Role > roles) {
+    public User(String firstName, String lastName, String email, String password, String address , String phone , String photo ,Collection< Role > roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,11 +18,14 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.active=true;
+        this.address = address;
+        this.phone = phone;
+        this.photo = photo;
     }
 
 
     public User(Long id, String firstName, String lastName, String email, String password, Boolean active,
-			String adderss, int phone, Collection<Role> roles) {
+			String adderss, String phone, String photo ,Collection<Role> roles) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -32,6 +35,7 @@ public class User {
 		this.active = true;
 		this.address = adderss;
 		this.phone = phone;
+        this.photo = photo;
 
 	}
 
@@ -119,13 +123,16 @@ public class User {
 	}
 	
 	@Column(name = "phone")
-	private int phone;
-	public int getPhone() {
-		return phone;
-	}
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
+	private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Column(name = "photo")
     public String photo;
 

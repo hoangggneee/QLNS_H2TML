@@ -21,7 +21,7 @@ public class UserRegistrationDto {
 
 	private String address;
 
-	private int phone;
+	private String phone;
 
 	public String photo;
 
@@ -29,7 +29,7 @@ public class UserRegistrationDto {
 	}
 
 	public UserRegistrationDto(String firstName, String lastName, String userName, String password, Boolean active,
-							   String address, int phone , String photo) {
+							   String address, String phone , String photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -82,11 +82,11 @@ public class UserRegistrationDto {
 		this.address = address;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

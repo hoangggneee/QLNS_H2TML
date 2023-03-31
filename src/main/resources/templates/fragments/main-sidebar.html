@@ -24,6 +24,7 @@
                 <ul class="treeview-menu">
 
                     <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}" ><a th:href="@{/user/list}"><i class="fa fa-circle-o"></i>Thông Tin</a></li>
+                    <li th:if="${#strings.contains(#authentication.getPrincipal().getAuthorities(), 'Giám Đốc')}" ><a th:href="@{/register}"><i class="fa fa-circle-o"></i>Đăng ký thành viên mới</a></li>
 
                 </ul>
             </li>
