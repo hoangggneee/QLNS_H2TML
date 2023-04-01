@@ -52,7 +52,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Hình Ảnh</label>
               <div class="col-sm-10">
-                <input type="file" class="form-control"  th:field="*{photo}" />
+                <input type="text" class="form-control"  th:field="*{photo}" />
                 <p class="text-red" th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></p>
               </div>
             </div>
