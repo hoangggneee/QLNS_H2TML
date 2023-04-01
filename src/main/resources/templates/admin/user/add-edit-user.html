@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+  <title>Người Dùng</title>
+</head>
+<body>
+<section layout:fragment="header">
+  <h1>
+    Thêm Người Dùng
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/static"><i class="fa fa-dashboard"></i>Trang chủ</a></li>
+    <li class="active">Người Dùng</li>
+  </ol>
+</section>
+<div layout:fragment="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Người Dùng</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form th:action="@{/user/save}" th:object="${user}" method="post" class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mã Người Dùng</label>
+
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Mã Người Dùng">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tên Họ</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{firstName}" />
+                <p class="text-red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Tên </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control"  th:field="*{lastName}" />
+                <p class="text-red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Email </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  th:field="*{email}" />
+              <p class="text-red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mật Khẩu </label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control"  th:field="*{password}" />
+              <p class="text-red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Địa Chỉ </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  th:field="*{address}" />
+              <p class="text-red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Số Điện Thoại</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  th:field="*{phone}" />
+              <p class="text-red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Hình Ảnh</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"  th:field="*{photo}" />
+              <p class="text-red" th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}"></p>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer center">
+            <a th:href="@{/user/list}">
+              <button type="button" class="btn btn-default"><i class="fa fa-right"></i>Quay lại</button>
+            </a>
+            <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i>Lưu</button>
+          </div>
+          <!-- /.box-footer -->
+        </form>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
+
+</body>
+
+</html>
