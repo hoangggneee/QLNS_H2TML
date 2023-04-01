@@ -1,6 +1,7 @@
 package h2tml.qlns.service;
 
 import h2tml.qlns.data.UserInfoDetails;
+import h2tml.qlns.model.Employee;
 import h2tml.qlns.model.Position;
 import h2tml.qlns.model.Role;
 import h2tml.qlns.model.User;
@@ -20,6 +21,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+
 public class UserServiceImpl implements IUserService{
 
     @Autowired
@@ -77,5 +79,37 @@ public class UserServiceImpl implements IUserService{
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public User getById(Long id) {
+        User user = null ;
+        if(Objects.nonNull(id)){
+            Optional<User> optionalUser = userRepository.findById(id);
+            if(optionalUser.isPresent()){
+                user = optionalUser.get();
+            }else {
+                throw new RuntimeException("Nguoi dung không tìm thấy id:" + id);
+            }
+
+        }
+        return user;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        if(Objects.nonNull(id)){
+            userRepository.deleteById(id);
+        }
+
+    }
+
+    public void save(User user)
+    {
+        if(Objects.nonNull(user)){
+            userRepository.save(user);
+        }
+    }
+
+
 }
 

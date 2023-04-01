@@ -1,5 +1,6 @@
 package h2tml.qlns.service;
 
+import h2tml.qlns.model.Employee;
 import h2tml.qlns.model.Position;
 import h2tml.qlns.model.User;
 
@@ -10,10 +11,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.validation.Valid;
 
-public interface IUserService extends UserDetailsService{
+public interface IUserService extends UserDetailsService {
     User save(@Valid UserRegistrationDto registrationDto);
+
     User findByUsername(String username);
-	List<User> findAll();
+
+    List<User> findAll();
+    User getById(Long id);
+
+    void deleteById(Long id);
+
+    void save(User user);
 
     
     
